@@ -1,0 +1,20 @@
+1. Git-2.20.1-64-bit
+2. create a folder in github or bitbucket and copy clone id
+3. go to in local folder and open git bash
+4. git clone <id>
+5. git add * or git add filename
+6. git commit -m 'massage'
+7. git status
+8. git push
+9. git pull
+10. git log (to see all changes from scretch)
+11. git reset --hard <commit id>
+12. git reset --hard origin/master
+13. git reflog
+14. git branch
+15. git branch dummy1
+16. git checkout dummy1
+17. git checkout master
+18. git merge dummy1
+19. touch dummy.html (to create new html file)
+20. 
