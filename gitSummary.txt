@@ -1,0 +1,24 @@
+Git-2.20.1-64-bit
+create a folder in github or bitbucket and copy clone id
+go to in local folder and open git bash
+git clone <id>
+git add * or git add filename
+git commit -m 'massage'
+git status
+git push
+git pull
+git log (to see all changes from scretch)
+git reset --hard <commit id>
+git reset --hard origin/master
+git reflog
+git branch
+git branch dummy1
+git checkout dummy1
+git commit -am 'add file in dummy1 branch'
+git push
+git push --set-upstream origin dummy1
+git checkout master
+git merge dummy1
+touch dummy.html (to create new html file)
+git fetch
+ 
