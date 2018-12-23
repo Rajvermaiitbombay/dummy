@@ -1,4 +1,6 @@
 Git-2.20.1-64-bit
+git config --global user.email "raj345051.com"
+git config --global user.name "rajkumar"
 create a folder in github or bitbucket and copy clone id
 go to in local folder and open git bash
 git clone <id>
