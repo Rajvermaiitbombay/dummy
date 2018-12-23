@@ -2,11 +2,44 @@
 <html>
 	<head>
 			<title>dummy</title>
+			<style>
+			@media (min-width:500px){h1::after {content:" I am learning html/css";}}
+			@media (max-width:499px){h1::after {content:" I am learning SQL";}}
+			input[type=text]{border:2px solid blue;
+							font-size:16px;}
+			#div1 h1{font-size:16px;}
+			#div1 p{font-size:20px;
+						display:inline;}
+			#div1 h1::before{
+					content:"(*) ";
+					color:red;}
+			#div p::after{
+					content:" (*)";
+					color:red;}
+			#bt {color:black;
+			background-color:white;
+			border: 2px solid blue;
+			font-size:25px;}
+			#bt:hover {background-color:red;}
+			#bt:focus {background-color:green;}
+			.main{width:30%;text-align:center;
+			border:3px solid blue;}
+						
+			</style>
 	</head>
 	<body>
+	<a href='https://google.com'>Google</a>
+	<a href='ht.html'>Click here!</a>
+	<h1 id='id4'>hello world!</h1>
+	<div class='main'>
+	<div id='div'><p>Name</p>
+	<input name='name' type='text' placeholder='white your name'></div>
+	<div id='div1'><h1>Gender</h1>
+	<input name='rad' type='radio' value='male'><p>Male</p>
+	<input name='rad' type='radio' value='female'><p>Female</p>
+	</div>
+	<button id='bt'>Submit</button></div>
 	
-	<h1>hello world! I am learning html/css</h1>
-	<h2>hello world!</h2>
 	</body>
 
 

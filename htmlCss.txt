@@ -1,0 +1,7 @@
+css selectors ---responsive design
+viewport--
+media queries--
+display: inline, inline-block, block,flex,grid
+flex-wrap:wrap
+---sass--
+
