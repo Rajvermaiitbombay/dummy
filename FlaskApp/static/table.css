@@ -1,0 +1,67 @@
+.mystyle {
+    font-size: 11pt; 
+    font-family: Arial;
+    border-collapse: collapse; 
+    border: 1px solid silver;
+
+}
+
+.mystyle td, th {
+    padding: 5px;
+}
+
+.mystyle tr:nth-child(even) {
+    background: #E0E0E0;
+}
+
+.mystyle tr:hover {
+    background: silver;
+    cursor: pointer;
+}
+
+.tab 
+{
+    background-color: DodgerBlue;
+    height: 70px; 
+    width: 100%;
+    text-align: center;
+    background-size: cover;
+    background-position: center; 
+}
+.tab a
+{
+    color: black;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    float: right;   
+}
+.tab a:hover
+{
+    color: blue;
+    border: 1.5px solid blue;
+}
+.tab h1
+{
+    float: center;
+    color: white;
+    font-size:20px;
+    padding: 15px; 
+}
+.set
+{
+    padding: 15px;
+    margin-left: 150px;
+    color: Azure;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Oct  5 16:38:55 2018
+
+@author: User5
+"""
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload</title>
+<br/> <br/>
+</head>
+   <body>
+       </h> <b>Kindly Fill your details: </b></h>
+       <form  action = "{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
+       </h> Upload Your Test Dataset </h>
+       <p><input type = "file" name = "myfile" /></p>
+        <br/>
+        <p><b><input type = "submit" value = "predict" /></b></p>
+        <br/>
+       </form>   
+   </body>
+</html>

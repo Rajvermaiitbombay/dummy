@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload</title>
+<link rel= "stylesheet" type= "text/css" href= "static\upload.css">
+</head>
+   
+   <header>
+       <div class="row">   
+       <ul class="main-nav">
+        <b><li class="active"><a href="/main"> Home </a></li>
+            <li><a href="/upload"> Upload </a></li>
+           <li><a href="/about"> About </a></li></b>
+       </ul>
+       </div> 
+       
+      </header> 
+      <body>
+      <div class="raj">
+       <P><h1> <b>Kindly Fill your details: </b></h1></br> </br>
+       <form  action = "{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
+       <h2> Upload Your Test Dataset </h2>
+       <h3 style="font-size:40px;"><input type = "file" name = "myfile" /></h3>
+       <input type="button" value="Upload File" onclick="progressBarSim(amountLoaded)">
+        <b><h4 style="font-size:50px;"><b><input type = "submit" value = "Upload" /></b></h4></b></p>
+        <progress id="progressBar" value="0" max="100" style="width:300px; height: 24px"></progress>
+        <span id="status"></span>
+        <h1 id="finalMessage"></h1>
+      </form>
+      </div>
+<script type="text/javascript" language="javascript">
+function progressBarSim(al){
+    var bar = document.getElementById('progressBar');
+    var status = document.getElementById('status');
+    status.innerHTML = al+"%";
+    bar.value = al;
+    al++;
+    var sim = setTimeout("progressBarSim("+al+")",50);
+    if(al == 100){
+        status.innerHTML = "100%";
+        bar.value = 100;
+        clearTimeout(sim);
+        document.getElementById('finalMessage').innerHTML = "Process is complete";
+    }
+    
+}
+var amountLoaded = 0;
+</script>
+   </body>
+</html>

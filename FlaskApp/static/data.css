@@ -1,0 +1,90 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+header
+{
+    background-color: DodgerBlue;
+    height: 50px; 
+    width: 100%;
+    text-align: center;
+    background-size: cover;
+    background-position: center; 
+}
+
+body
+{
+    background-image: url(logistics.png);
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.main-nav
+{
+    float: right;
+    list-style: none;
+    margin-top: 15px;   
+}
+
+
+.main-nav li
+{
+    display: inline-block;
+    }
+.main-nav li a
+{
+    color: white;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;    
+}
+
+.main-nav li a:hover
+{
+    color: black;
+    border: 1.5px solid black;
+}
+.row
+{
+    width: 100%;
+    margin-top: 0;
+    margin-right: 0;
+}
+.raj
+{
+    background-color: white;
+    margin-top:100px;
+    height: 200px;
+    text-align: center;
+    padding: 5px;
+}
+.raj h1
+{
+    font-size:30px;
+    font-family: arial;
+}
+.raj h2
+{
+    font-size:25px;
+    font-family: arial;
+}
+.raj h3
+{
+    font-size:40px;
+    font-family: arial;
+}
+
+
+
+
+
+
+
+
+
+
+
+
