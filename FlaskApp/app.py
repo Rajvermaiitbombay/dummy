@@ -69,7 +69,7 @@ def predict():
         return render_template('notify.html')
     elif request.method == 'POST' and request.files['myfile']:
         f = request.files['myfile']
-        test = pd.read_excel(f)
+        test = pd.read_csv(f)
         df = my_model.predict(test.iloc[:,2:8])
         dt =pd.DataFrame(df)
         test1=test.reset_index(drop=True)
@@ -77,7 +77,7 @@ def predict():
 		## concatnate two dataframes into one dataframe
         total=pd.concat([test1,dt],axis=1)
         total.columns = ['Name','Date','x','y','z','xi','yi','zi','prediction']
-        return render_template('data.html',  data=test.to_html())
+        return render_template('data.html',  data=test.to_html(index=False))
 @app.route('/download') # this is a job for GET, not POST
 def data_csv():
     return send_file('pred.xlsx',
