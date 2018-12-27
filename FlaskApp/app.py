@@ -46,10 +46,7 @@ def log():
     return render_template('login.html')
 @app.route('/main')
 def main():
-    if request.method == 'GET':
-        return render_template('notify.html')
-    else:
-        return render_template('mainpage.html')
+    return render_template('mainpage.html')
 @app.route('/data')
 def data():
     return render_template('data.html')
@@ -62,9 +59,10 @@ def login():
         return render_template('mainpage.html')
     else:
         return render_template('index.html')
-
+test=pd.DataFrame()
 @app.route('/predict', methods = ['GET','POST'])
 def predict():
+    global test
     if request.method == 'GET':
         return render_template('notify.html')
     elif request.method == 'POST' and request.files['myfile']:
@@ -77,7 +75,7 @@ def predict():
 		## concatnate two dataframes into one dataframe
         total=pd.concat([test1,dt],axis=1)
         total.columns = ['Name','Date','x','y','z','xi','yi','zi','prediction']
-        return render_template('data.html',  data=test.to_html(index=False))
+        return render_template('data.html')
 @app.route('/download') # this is a job for GET, not POST
 def data_csv():
     return send_file('pred.xlsx',
@@ -86,10 +84,10 @@ def data_csv():
                      as_attachment=True)
 @app.route('/result')
 def result():
-    return render_template('pred.html')
+    return render_template('table.html',  tables=[test.to_html(classes='data')], titles=test.columns.values)
 @app.route('/test')
 def test():
-    return render_template('test.html')
+    return render_template('test.html',  data=test.to_html(index=False))
 
 if __name__ == '__main__':
     port=5000+ random.randint(0,999)

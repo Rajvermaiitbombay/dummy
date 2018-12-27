@@ -4,6 +4,23 @@
 <head>
 <title>Upload</title>
 <link rel= "stylesheet" type= "text/css" href= "static\upload.css">
+<link rel= "stylesheet" type= "text/css" href= "static\app.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  $("#button").click(function() {
+    $("#button").addClass("onclic");
+        setTimeout(function(){
+        $("#button").removeClass("onclic");
+        $("#button").addClass("validate");
+    }, 5000);
+  });
+          $("#file").bind('change', function() {
+            alert('This file size is: ' + this.files[0].size/1024/1024 + "MB");
+        });
+
+});
+</script>
 </head>
    
    <header>
@@ -21,31 +38,21 @@
        <P><h1> <b>Kindly Fill your details: </b></h1></br> </br>
        <form  action = "{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
        <h2> Upload Your Test Dataset </h2>
-       <h3 style="font-size:40px;"><input type = "file" name = "myfile" /></h3>
-       <input type="button" value="Upload File" onclick="progressBarSim(amountLoaded)">
-        <b><h4 style="font-size:50px;"><b><input type = "submit" value = "Upload" /></b></h4></b></p>
+       <h3 style="font-size:40px;"><input id="file" type = "file" name = "myfile" /></h3>
+<!--       
+        <input id="button" type="button" value="Upload File" class="btn btn1"> 
+        <b><h4 style="font-size:50px;"><b><input type = "submit" value = "Upload" /></b></h4></b></p>  
         <progress id="progressBar" value="0" max="100" style="width:300px; height: 24px"></progress>
         <span id="status"></span>
         <h1 id="finalMessage"></h1>
+-->
+              <div class="container">
+            <button id="button" type = "button" class="btn btn1"> Upload</button>
+            <b><h4 style="font-size:50px;"><b><input type = "submit" value = "Upload" /></b></h4>
+          </div>
       </form>
+
       </div>
-<script type="text/javascript" language="javascript">
-function progressBarSim(al){
-    var bar = document.getElementById('progressBar');
-    var status = document.getElementById('status');
-    status.innerHTML = al+"%";
-    bar.value = al;
-    al++;
-    var sim = setTimeout("progressBarSim("+al+")",50);
-    if(al == 100){
-        status.innerHTML = "100%";
-        bar.value = 100;
-        clearTimeout(sim);
-        document.getElementById('finalMessage').innerHTML = "Process is complete";
-    }
-    
-}
-var amountLoaded = 0;
-</script>
+
    </body>
 </html>
