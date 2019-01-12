@@ -84,10 +84,10 @@ def data_csv():
                      as_attachment=True)
 @app.route('/result')
 def result():
-    return render_template('table.html',  tables=[test.to_html(classes='data')], titles=test.columns.values)
+    return render_template('table.html',  tables=[test.to_html(index=False)], titles=test.columns.values)
 @app.route('/test')
 def test():
-    return render_template('test.html',  data=test.to_html(index=False))
+    return render_template('test.html', tables=test.values.tolist(), titles=test.columns.values)
 
 if __name__ == '__main__':
     port=5000+ random.randint(0,999)

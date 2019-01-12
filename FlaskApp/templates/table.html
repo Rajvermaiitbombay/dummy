@@ -2,42 +2,69 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel= "stylesheet" type= "text/css" href= "static\data.css">
+<!-- <link rel= "stylesheet" type= "text/css" href= "static\data.css"> -->
 <style>
 * {
   box-sizing: border-box;
 }
-
+body
+{
+    background-image: url(logistics.png);
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+h2{  position:absolute;
+  left:14.5%;
+  top:0%;
+    }
 #myInput {
   background-image: url('/css/searchicon.png');
   background-position: 10px 10px;
   background-repeat: no-repeat;
-  width: 100%;
+  width: 30%;
+  position:absolute;
+  left:5%;
+  top:8%;
   font-size: 16px;
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
   margin-bottom: 12px;
 }
-
-#myTable {
-  border-collapse: collapse;
+.mystyle{	width:100%;
+	height:80%;
+	overflow: scroll;
+		position:absolute;
+	left:0%;
+	top:20%;}
+	
+.mystyle table {
+    font-size: 11pt; 
+    font-family: Arial;
+    border-collapse: collapse; 
+	border:None;
   width: 100%;
-  border: 1px solid #ddd;
-  font-size: 18px;
+  margin: 20px auto;
+  table-layout: auto;
+	background-color:white;
+	
 }
 
-#myTable th, #myTable td {
-  text-align: left;
-  padding: 12px;
+.mystyle th {
+    padding: 10px;
+	color:white;
+	background-color: #4CAF50;
+	text-align:center;
+}
+.mystyle td{
+    text-align: center;
+     padding: 10px;
 }
 
-#myTable tr {
-  border-bottom: 1px solid #ddd;
-}
+.mystyle tr:nth-child(even){background-color: #f2f2f2}
 
-#myTable tr.header, #myTable tr:hover {
-  background-color: #f1f1f1;
-}
+
 </style>
 </head>
 <body>
@@ -48,7 +75,6 @@
 
 <table id="myTable" class="mystyle">
    
-
      {% for row in tables %}
     <tr>
         <td>{{ row|safe}}</td>
@@ -58,21 +84,26 @@
 
 <script>
 function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
+  var input, filter, table, tr, td, i, j, txtValue;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
+      td = tr[i].getElementsByTagName("td");
+      for (j = 0; j < td.length; j++) {
+          txtValue = td[j].textContent || td[j].innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              found = true;
+          }
+           
       }
-    }       
+      if (found) {
+          tr[i].style.display = "";
+          found = false;
+      } else {
+          tr[i].style.display = "none";
+      }
   }
 }
 </script>
