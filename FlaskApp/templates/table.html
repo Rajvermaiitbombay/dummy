@@ -1,112 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Login Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <link rel= "stylesheet" type= "text/css" href= "static\data.css"> -->
-<style>
-* {
-  box-sizing: border-box;
-}
-body
-{
-    background-image: url(logistics.png);
-    height: 100vh;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-}
-h2{  position:absolute;
-  left:14.5%;
-  top:0%;
-    }
-#myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 30%;
-  position:absolute;
-  left:5%;
-  top:8%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-.mystyle{	width:100%;
-	height:80%;
-	overflow: scroll;
-		position:absolute;
-	left:0%;
-	top:20%;}
-	
-.mystyle table {
-    font-size: 11pt; 
-    font-family: Arial;
-    border-collapse: collapse; 
-	border:None;
-  width: 100%;
-  margin: 20px auto;
-  table-layout: auto;
-	background-color:white;
-	
-}
-
-.mystyle th {
-    padding: 10px;
-	color:white;
-	background-color: #4CAF50;
-	text-align:center;
-}
-.mystyle td{
-    text-align: center;
-     padding: 10px;
-}
-
-.mystyle tr:nth-child(even){background-color: #f2f2f2}
-
-
-</style>
+<link rel= "stylesheet" type= "text/css" href= "static\toggle.css">
 </head>
 <body>
-
-<h2>My Customers</h2>
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-
-<table id="myTable" class="mystyle">
-   
-     {% for row in tables %}
-    <tr>
-        <td>{{ row|safe}}</td>
-    </tr>
-    {% endfor %}
-</table>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="/upload">Upload</a>
+  <a href="/test">Your test Data</a>
+  <a href="/download">Download</a>
+  <a href="#">Contact</a>
+</div>
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776</span>
+  <div id='line'>
+  <h2 style="font-size:50px">welcome!</h2>
+</div></div>
 
 <script>
-function myFunction() {
-  var input, filter, table, tr, td, i, j, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td");
-      for (j = 0; j < td.length; j++) {
-          txtValue = td[j].textContent || td[j].innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              found = true;
-          }
-           
-      }
-      if (found) {
-          tr[i].style.display = "";
-          found = false;
-      } else {
-          tr[i].style.display = "none";
-      }
-  }
+function openNav() {
+  document.getElementById("mySidenav").style.width = "15%";
+  document.getElementById("main").style.width = "85%";
+  document.getElementById("main").style.marginLeft = "15%";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0%";
+  document.getElementById("main").style.width = "100%";
+  document.getElementById("main").style.marginLeft= "0%";
 }
 </script>
 
+   
 </body>
-</html>
+</html> 

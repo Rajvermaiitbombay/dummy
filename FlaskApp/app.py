@@ -50,13 +50,16 @@ def main():
 @app.route('/data')
 def data():
     return render_template('data.html')
+@app.route('/toggle')
+def toggle():
+    return render_template('table.html')
 
 @app.route('/login', methods = ['GET','POST'])
 def login():
     if request.method == 'GET':
         return render_template('notify.html')
     elif request.form['password'] == 'password' and request.form['username'] == 'admin':
-        return render_template('mainpage.html')
+        return render_template('table.html')
     else:
         return render_template('index.html')
 test=pd.DataFrame()
@@ -87,7 +90,8 @@ def result():
     return render_template('table.html',  tables=[test.to_html(index=False)], titles=test.columns.values)
 @app.route('/test')
 def test():
-    return render_template('test.html', tables=test.values.tolist(), titles=test.columns.values)
+    Name=test['Name'].values.tolist()
+    return render_template('test.html', tables=test.values.tolist(), name=Name)
 
 if __name__ == '__main__':
     port=5000+ random.randint(0,999)
