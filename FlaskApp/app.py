@@ -13,7 +13,7 @@ import pandas as pd
 import numpy as np
 import flask
 import pickle,json
-from flask import Flask, render_template, url_for,request, jsonify,flash,send_file,Response, session, abort
+from flask import Flask, render_template, url_for,request, jsonify,flash,send_file,Response, session, abort,json
 import sklearn
 from sklearn.externals import joblib
 import glob
@@ -53,16 +53,46 @@ def data():
 @app.route('/toggle')
 def toggle():
     return render_template('table.html')
+@app.route('/line')
+def chart():
+    labels = [
+    'JAN', 'FEB', 'MAR', 'APR',
+    'MAY', 'JUN', 'JUL', 'AUG',
+    'SEP', 'OCT', 'NOV', 'DEC']
+
+    values = [
+    967.67, 1190.89, 1079.75, 1349.19,
+    2328.91, 2504.28, 2873.83, 4764.87,
+    4349.29, 6458.30, 9907, 16297]
+
+    return render_template('line.html', title='Bitcoin Monthly Price in USD', max=17000,labels=labels,values=values)
+@app.route('/bar')
+def bar():
+    lsp = pd.read_csv("lsp.csv")
+    lname=list(lsp.Name)
+    lsp1=lsp.iloc[:,1:9]
+    di=lsp1.set_index('Name').T.to_dict('list')
+    jsondf = json.dumps(di)
+    lsp2=lsp1.reset_index(drop=True)
+    lsp2.set_index('Name', inplace=True)
+    age=list((lsp[lsp['Name']=='a'].set_index('Name').transpose()).iloc[1:8,:]['a'])
+    name=list(lsp2.columns)
+    return render_template('bar.html',age=age,name=name,lname=lname,df=jsondf)
+
+test=pd.DataFrame()
 
 @app.route('/login', methods = ['GET','POST'])
 def login():
+
+#    df.columns=['x','y']
+#    ds=df.to_dict('records')
     if request.method == 'GET':
         return render_template('notify.html')
     elif request.form['password'] == 'password' and request.form['username'] == 'admin':
         return render_template('table.html')
     else:
         return render_template('index.html')
-test=pd.DataFrame()
+
 @app.route('/predict', methods = ['GET','POST'])
 def predict():
     global test
@@ -74,7 +104,6 @@ def predict():
         df = my_model.predict(test.iloc[:,2:8])
         dt =pd.DataFrame(df)
         test1=test.reset_index(drop=True)
-
 		## concatnate two dataframes into one dataframe
         total=pd.concat([test1,dt],axis=1)
         total.columns = ['Name','Date','x','y','z','xi','yi','zi','prediction']
