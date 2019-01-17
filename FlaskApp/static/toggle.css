@@ -47,12 +47,7 @@ width:100%;
   width:100%;
 
 }
-#main #line{    
-position:absolute;
-  top:10%;
-  left:10%;
-  height:90%;
-  width:90%;}
+
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}

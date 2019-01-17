@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 from werkzeug.serving import run_simple
 # Read CSV file #####
 lsp = pd.read_csv('lsp.csv')
-
+cord = pd.read_excel('cord_maha.xlsx')
 ## Split the training and tesing datasets from main datasets
 train = lsp.iloc[np.r_[1:11,16:21],3:10]
 
@@ -68,16 +68,19 @@ def chart():
     return render_template('line.html', title='Bitcoin Monthly Price in USD', max=17000,labels=labels,values=values)
 @app.route('/bar')
 def bar():
-    lsp = pd.read_csv("lsp.csv")
+    lsp = pd.read_excel("lsp.xlsx")
     lname=list(lsp.Name)
     lsp1=lsp.iloc[:,1:9]
+    cord1=cord.to_dict('dict')
+    json1 = json.dumps(cord1)
     di=lsp1.set_index('Name').T.to_dict('list')
     jsondf = json.dumps(di)
+    json2 = json.dumps(cord1)
     lsp2=lsp1.reset_index(drop=True)
     lsp2.set_index('Name', inplace=True)
     age=list((lsp[lsp['Name']=='a'].set_index('Name').transpose()).iloc[1:8,:]['a'])
     name=list(lsp2.columns)
-    return render_template('bar.html',age=age,name=name,lname=lname,df=jsondf)
+    return render_template('bar.html',age=age,name=name,lname=lname,df=jsondf,cord=json1,cord1=json2)
 
 test=pd.DataFrame()
 
