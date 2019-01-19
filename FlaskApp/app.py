@@ -53,6 +53,9 @@ def data():
 @app.route('/toggle')
 def toggle():
     return render_template('table.html')
+@app.route('/progress')
+def prog():
+    return render_template('progress.html')
 @app.route('/line')
 def chart():
     labels = [

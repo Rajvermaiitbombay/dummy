@@ -23,4 +23,4 @@ git checkout master
 git merge dummy1
 touch dummy.html (to create new html file)
 git fetch
- 
+pip install -r requirements.tx ---to install all modules from this file to python
