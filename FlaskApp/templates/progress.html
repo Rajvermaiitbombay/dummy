@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JQuery File upload progress bar with file size validation</title>
+        <title>Uploading..</title>
         <style type="text/css">
             #file_error{ color: red; }
-            #bar{ width:0%; margin:4px 0; height:32px;  background-color:#4298c8; }
+            #bararea {position: absolute;left:10%;width: 80%;background-color: transparent;}
+            #bar{ width:0%; height:22px;background-color:#4CAF50; text-align: center;line-height: 22px;color: white;}
             #percent{ text-align: center; color: #fffff;}
             #status{ color:#ffffff; }
-            .form-field{ padding: 5px;}
+            .form-field{ padding-top: 50px;}
             #loader{ display: none; position: absolute; z-index: 9999; padding-top: 80px; padding-left: 25%;}
-            .formblock{ border:3px solid #892525; border-radius: 4px; width: 400px; margin: 30px auto; padding:4px;}
+            .formblock{ width: 100%; height:50%;position: absolute;top:15%; margin: 30px auto; padding:4px;}
             #cfsubmit { background: #892525; border-radius: 3px; color: #fff; padding: 3px 7px;}
             #cfsubmit { background: #892525; border-radius: 3px; color: #fff; padding: 3px 7px;}
         </style>
@@ -23,8 +24,8 @@
                     if($('input#file').val() != undefined) {
                         var file = $('input#file')[0].files[0].size;
                         file = file/1024; file = file/1024;
-                        if(file > 10) {
-                            $('#file_error').html('Fize Size is greater than 10 MB');
+                        if(file > 1000) {
+                            $('#file_error').html('Fize Size is greater than 1000 MB');
                             return false;
                         } else {
                             $('#file_error').hide();
@@ -64,23 +65,9 @@
     </head>
     <body>
         <div class="formblock" style="opacity: 1;">
-		<div id="loader">
-			<center><img src="loading.gif" width="100px" height="100px" ></center>
-		</div>
-		<?php 
-			if($_GET['msg']== 'success'){ 
-			echo 'Form submitted successfully.';
-			}
-		?>
+
 		<form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
-		<div class="form-field">
-			<label for="name" class="col-xs-4 col-form-label" >Name: </label>
-			<input type="text" name="c_name" value="" />
-		</div>
-		<div class="form-field">
-			<label for="example-text-input" class="col-xs-4 col-form-label" >Age: </label>
-			<input type="number" name="age" value=""/>
-		</div>
+
 		<div class="form-field">
 			<label for="example-text-input" class="col-xs-4 col-form-label" >Upload File: </label>
 			<input type="file" name="myfile" id="file"/>

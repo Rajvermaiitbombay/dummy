@@ -53,9 +53,9 @@ def data():
 @app.route('/toggle')
 def toggle():
     return render_template('table.html')
-@app.route('/progress')
+@app.route('/register')
 def prog():
-    return render_template('progress.html')
+    return render_template('signupform.html')
 @app.route('/line')
 def chart():
     labels = [
