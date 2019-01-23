@@ -20,6 +20,8 @@ import glob
 from sklearn.datasets.samples_generator import make_blobs
 import matplotlib.pyplot as plt
 from werkzeug.serving import run_simple
+from sqlalchemy import create_engine
+import mysql.connector as sql
 # Read CSV file #####
 lsp = pd.read_csv('lsp.csv')
 cord = pd.read_excel('cord_maha.xlsx')
@@ -56,6 +58,9 @@ def toggle():
 @app.route('/register')
 def prog():
     return render_template('signupform.html')
+@app.route('/logout')
+def logout():
+    return render_template('signupform.html')
 @app.route('/line')
 def chart():
     labels = [
@@ -86,18 +91,44 @@ def bar():
     return render_template('bar.html',age=age,name=name,lname=lname,df=jsondf,cord=json1,cord1=json2)
 
 test=pd.DataFrame()
-
-@app.route('/login', methods = ['GET','POST'])
-def login():
-
-#    df.columns=['x','y']
-#    ds=df.to_dict('records')
+@app.route('/signup', methods = ['GET','POST'])
+def signup():
     if request.method == 'GET':
         return render_template('notify.html')
-    elif request.form['password'] == 'password' and request.form['username'] == 'admin':
-        return render_template('table.html')
     else:
-        return render_template('index.html')
+        name = request.form['username']
+        email = request.form['email']
+        password = request.form['pass']
+        engine = create_engine('mysql+mysqlconnector://root:root@localhost/dummy',echo = False)
+        signup = pd.DataFrame({'username':[name],'email_id':[email],'password':[password]})
+        signup.to_sql(name='signup',con=engine,if_exists='append',index=False)
+        return render_template('signupform.html')
+    
+@app.route('/login', methods = ['GET','POST'])
+def login():
+    user = request.form['username']
+    password = request.form['password']
+    conn = sql.connect(host ='localhost' ,database ='dummy' ,user = 'root',password = 'root')
+    cursor = conn.cursor()
+    query1 = ('SELECT * FROM signup')
+    cursor.execute(query1) 
+    info = cursor.fetchall()
+    info = pd.DataFrame(info)
+    info.columns = ['username','email_id','password']
+    conn.close()
+    if info[info["username"]==user].empty == True and info[info["password"]==password].empty == True:
+        error = 'username and password, both are incorrect!' 
+        return render_template('signupform.html',error=error) 
+    elif info[info["username"]==user].empty == True:
+        error = 'username incorrect!' 
+        return render_template('signupform.html',error=error)
+    elif password != info[info["username"]==user].set_index('username')["password"][user] and info[info["username"]==user].empty == False:
+        error = 'password incorrect!' 
+        return render_template('signupform.html',error=error)
+    elif password == info[info["username"]==user].set_index('username')["password"][user]: 
+        return render_template('table.html') 
+    else:
+        return render_template('signupform.html')
 
 @app.route('/predict', methods = ['GET','POST'])
 def predict():

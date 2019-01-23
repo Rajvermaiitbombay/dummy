@@ -29,6 +29,7 @@
     letter-spacing: 0.01em;
     position: relative;
     z-index: 1;
+    cursor: pointer;
  }   
    button:hover {
       color: white;
@@ -64,7 +65,7 @@ label
       z-index: 2;
       pointer-events: none;
  }     
-input[type="text"]
+input
 {
       transition: all 0.25s cubic-bezier(.53,.01,.35,1.5);
       appearance: none;
@@ -83,20 +84,20 @@ input[type="text"]
       position: relative;
       z-index: 1;
  }     
-input[type="text"]:focus{
+input:focus{
         outline: none;
         background: rgba(255,74,86,1);
         color: white;
         margin-top: 15px;
         }
-input[type="text"]:valid{
+input:valid{
         margin-top: 15px;
       }    
-input[type="text"]:focus ~ label{
+input:focus ~ label{
         transform: translate( 0 , -35px );
         color:white;
       }
-input[type="text"]:valid ~ label{
+input:valid ~ label{
         text-transform: uppercase;
         font-style: italic;
         transform: translate( 5px , -35px ) scale(0.6);

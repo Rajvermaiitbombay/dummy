@@ -7,7 +7,7 @@
 <script>
 $(document).ready(function(){
 $("#signup").click(function() {
-  $(".message").css("transform", "translateX(100%)");
+  $(".message").css("transform", "translateX(0)");
   if ($(".message").hasClass("login")) {
     $(".message").removeClass("login");
   }
@@ -15,7 +15,7 @@ $("#signup").click(function() {
 });
 
 $("#login").click(function() {
-  $(".message").css("transform", "translateX(0)");
+  $(".message").css("transform", "translateX(100%)");
   if ($(".message").hasClass("login")) {
     $(".message").removeClass("signup");
   }
@@ -32,36 +32,40 @@ $("#login").click(function() {
       <button class="button" id="login"> Login</button>
     </div>
   </div>
+    <div class="form form--login">
+    <div class="form--heading">Welcome back! </div>
+    <form action = "{{ url_for('login')}}" method="post" enctype="multipart/form-data" autocomplete="off">
+        <div class="question">
+    <input type="text" name="username" required/><label>Username</label>
+  </div>
+    <div class="question">
+    <input type="password" name="password" required/>
+    <label>Password</label>
+  </div>
+<button type="submit">Login</button>
+        {% if error %}
+            <p class="error"><strong>Error: </strong>{{error}}
+        {% endif %}
+    </form>
+  </div>
   <div class="form form--signup">
     <div class="form--heading">Welcome! Sign Up</div>
-    <form autocomplete="off">
+    <form action = "{{ url_for('signup')}}" method="post" enctype="multipart/form-data" autocomplete="off">
         <div class="question">
-    <input type="text" required/><label>Name</label>
+    <input type="text" name="username" required/><label>Username</label>
   </div>
   <div class="question">
-    <input type="text" required/>
+    <input type="text" name="email" required/>
     <label>Email Address</label>
   </div>
     <div class="question">
-    <input type="text" required/>
+    <input type="password" name="pass" required/>
     <label>Password</label>
   </div>
-<button>Sign up</button>
+<button type="submit">Sign up</button>
     </form>
   </div>
-  <div class="form form--login">
-    <div class="form--heading">Welcome back! </div>
-    <form autocomplete="off">
-        <div class="question">
-    <input type="text" required/><label>Name</label>
-  </div>
-    <div class="question">
-    <input type="text" required/>
-    <label>Password</label>
-  </div>
-<button>Login</button>
-    </form>
-  </div>
+
 </div>
 
 </body>

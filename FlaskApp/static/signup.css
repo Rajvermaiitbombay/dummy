@@ -55,6 +55,12 @@ body {
 }
 .btn-wrapper {
   width: 60%;
+  position: absolute;
+  left:50%;
+  top:40%;
+  background: white;
+  transform: translate(-50%,-50%);
+  text-align: center;
 }
 .form {
   width: 100%;
@@ -63,7 +69,7 @@ body {
 .form--heading {
   font-size: 18px;
   height: 50px;
-  color: #809bce;
+  color: #2ecc71;
   font-family: 'Playfair Display', serif;
 }
 form {
@@ -91,22 +97,27 @@ form input:focus {
   transition: 0.6s all ease;
 }
 .button {
-  width: 100%;
+  width: 80%;
   height: 30px;
-  border: 0;
+  border: 2px solid #3498db;
   outline: 0;
-  color: white;
+  color: #3498db;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: bold;
   position: relative;
   z-index: 3;
   letter-spacing: 2px;
-  background: linear-gradient(45deg, #809bce, #9893da);
+  background: none;
+  cursor: pointer;
   font-family: 'Playfair Display', serif;
 }
-.button:hover {
+.button:hover,.button:focus {
   transform: translateY(4px);
   transition: 0.4s all ease;
+  width: 100%;
+  color:#3498db;
+ background:white;
+    border-color: #2ecc71;
 }
 @media (max-width: 750px) {
   .container {
