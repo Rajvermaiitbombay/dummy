@@ -1,0 +1,12 @@
+javascript events-
+onclick,onmouseover,onsubmit,onchange,onblur,onkeyup,onkeydown,onload.....
+document.querySelector('h1').innerHTML = 'Goodbye!';
+we can use tag,#id,.class in querySelector.
+for assumption (let i = 0; ).
+=== for exact comparision.
+'Count is ${count}!' variable inside string.
+variables--const,let,var
+Arrow functions=
+
+
+

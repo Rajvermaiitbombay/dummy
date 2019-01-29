@@ -52,7 +52,7 @@ def main():
 @app.route('/data')
 def data():
     return render_template('data.html')
-@app.route('/toggle')
+@app.route('/home')
 def toggle():
     return render_template('table.html')
 @app.route('/register')

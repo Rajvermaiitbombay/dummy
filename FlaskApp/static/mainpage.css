@@ -6,7 +6,7 @@
 
 header
 {
-    background-image: url(logistics.png);
+    background-image: url(mainpic.jpg);
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -14,9 +14,10 @@ header
 
 .main-nav
 {
-    float: right;
+    position:absolute;
+    right:1%;
     list-style: none;
-    margin-top: 15px;   
+    margin-top: 2%;   
 }
 
 
@@ -26,7 +27,7 @@ header
     }
 .main-nav li a
 {
-    color: blue;
+    color: white;
     text-decoration: none;
     padding: 5px 20px;
     font-family: "Roboto", sans-serif;
@@ -39,9 +40,13 @@ header
     border: 1.5px solid white;
 }
 .row
-{
-    max-width: 1200px;
-    margin: auto;
+{   height:10%;
+    width: 100%;
+    position:absolute;
+    top:0%;
+    background:black;
+    opacity:0.5;
+
 }
 
 
