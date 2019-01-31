@@ -7,6 +7,9 @@ for assumption (let i = 0; ).
 'Count is ${count}!' variable inside string.
 variables--const,let,var
 Arrow functions=
+Ajax
+Socket.IO = chat box (edx/web design/javascript)
+
 
 
 

@@ -61,19 +61,9 @@ def prog():
 @app.route('/logout')
 def logout():
     return render_template('signupform.html')
-@app.route('/line')
-def chart():
-    labels = [
-    'JAN', 'FEB', 'MAR', 'APR',
-    'MAY', 'JUN', 'JUL', 'AUG',
-    'SEP', 'OCT', 'NOV', 'DEC']
-
-    values = [
-    967.67, 1190.89, 1079.75, 1349.19,
-    2328.91, 2504.28, 2873.83, 4764.87,
-    4349.29, 6458.30, 9907, 16297]
-
-    return render_template('line.html', title='Bitcoin Monthly Price in USD', max=17000,labels=labels,values=values)
+@app.route('/chat')
+def chat():
+    return render_template('chatbots.html')
 @app.route('/bar')
 def bar():
     lsp = pd.read_excel("lsp.xlsx")

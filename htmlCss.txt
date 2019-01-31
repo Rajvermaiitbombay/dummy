@@ -9,3 +9,10 @@ flex-wrap:wrap
 @app.route("/<string:name>")
 def hello(name):
 	return f"Hello, {name}!"
+
+-------html------
+{% extends "layout.html" %}
+
+{% block body %}
+ <h1>First pag</h1>
+{% endblock %}
