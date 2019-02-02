@@ -1,2 +1,47 @@
 Numpy,scipy,matplotlib,pandas,scikit-learn.
 from sklearn import preprocessing
+# split the dataset into training nd testing datasets
+train/test split
+k-fold cross-validation **
+find the accuracy of the model, MSE(mean squared eror)
+# accuracy of classifier=1. jaccard index (j=|y intersection y1|/|y|+|y1|-|y intersec y1|),
+2. F1-score (confusion matrix),3. Log loss.
+# decision trees
+use entropy or information gain to find best split.
+repeat this process untill pure sunsets will be found
+# Support vector machine ( SVM )
+Kernels=linear,polynomial, radial basis function(RBF), sigmoid, Gaussian.
+kernels will help us to convert the data from non-linearly inseparable to linearly separable.
+we choose that hyperplane which has highest margin from support vectors.
+we use gradient descent method to find best intercept and angle of hyper plane so that it has highest margin.
+image recognition, spam detection, sentiment analysis, outlier detection= SVM will be used.
+# clustering 
+--k-means clustering
+use elbow method to maximize the accuracy
+--Hierarchical clustering
+1. Agglomerative 2. Divisive clustering
+# Recommender system
+1. content-based (simillar to other product ) 
+2. collaborative filtering (simillar to other users which have same taste)
+--Implementing recommender system types
+1. memory based
+uses the entire user-item dataset to generate a reco system
+uses pearson correlation,euclidean dist..
+2. model based
+uses ML techniques like regression,clustering,classification
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
